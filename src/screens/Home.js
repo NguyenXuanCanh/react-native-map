@@ -36,9 +36,9 @@ export default function ({ navigation }) {
               onPress={() => Linking.openURL("https://rapi-ui.kikiding.space/")}
             />
             <Button
-              text="Go to second screen"
+              text="Go to map screen"
               onPress={() => {
-                navigation.navigate("SecondScreen");
+                navigation.navigate("Map");
               }}
               style={{
                 marginTop: 10,

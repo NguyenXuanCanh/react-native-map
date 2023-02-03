@@ -9,7 +9,6 @@ import TabBarIcon from "../components/utils/TabBarIcon";
 import TabBarText from "../components/utils/TabBarText";
 //Screens
 import Home from "../screens/Home";
-import SecondScreen from "../screens/SecondScreen";
 import About from "../screens/About";
 import Profile from "../screens/Profile";
 import Loading from "../screens/utils/Loading";
@@ -17,6 +16,7 @@ import Loading from "../screens/utils/Loading";
 import Login from "../screens/auth/Login";
 import Register from "../screens/auth/Register";
 import ForgetPassword from "../screens/auth/ForgetPassword";
+import Map from "../screens/Map";
 // import { AuthContext } from "../provider/AuthProvider";
 
 // Better put your these secret keys in .env file
@@ -58,7 +58,7 @@ const Main = () => {
       }}
     >
       <MainStack.Screen name="MainTabs" component={MainTabs} />
-      <MainStack.Screen name="SecondScreen" component={SecondScreen} />
+      <MainStack.Screen name="Map" component={Map} />
     </MainStack.Navigator>
   );
 };
