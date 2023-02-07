@@ -9,7 +9,7 @@ import TabBarIcon from "../components/utils/TabBarIcon";
 import TabBarText from "../components/utils/TabBarText";
 //Screens
 import Home from "../screens/Home";
-import About from "../screens/About";
+import Vehicle from "../screens/Vehicle";
 import Profile from "../screens/Profile";
 import Loading from "../screens/utils/Loading";
 // Auth screens
@@ -102,14 +102,14 @@ const MainTabs = () => {
         }}
       />
       <Tabs.Screen
-        name="About"
-        component={About}
+        name="Vehicle"
+        component={Vehicle}
         options={{
           tabBarLabel: ({ focused }) => (
-            <TabBarText focused={focused} title="About" />
+            <TabBarText focused={focused} title="Vehicle" />
           ),
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={"ios-information-circle"} />
+            <TabBarIcon focused={focused} icon={"car"} />
           ),
         }}
       />
@@ -118,8 +118,8 @@ const MainTabs = () => {
 };
 
 export default () => {
-//   const auth = useContext(AuthContext);
-//   const user = auth.user;
+  //   const auth = useContext(AuthContext);
+  //   const user = auth.user;
   return (
     <NavigationContainer>
       {/* {user == null && <Loading />} */}

@@ -13,7 +13,7 @@ import {
 
 export default function ({ navigation }) {
   const { isDarkmode, setTheme } = useTheme();
-//   const auth = getAuth();
+  //   const auth = getAuth();
   return (
     <Layout>
       <View

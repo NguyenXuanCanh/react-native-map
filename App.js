@@ -23,7 +23,7 @@ export default function App() {
   return (
     <ThemeProvider images={images}>
       {/* <AuthProvider> */}
-        <AppNavigator />
+      <AppNavigator />
       {/* </AuthProvider> */}
     </ThemeProvider>
   );
