@@ -2,12 +2,13 @@ import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import {
   Avatar,
+  Button,
   Layout,
   Section,
   SectionContent,
   Text,
 } from "react-native-rapi-ui";
-import InfoRow from "../components/profile/InfoRow";
+import InfoRow from "../components/common/InfoRow";
 
 export default function ({ navigation }) {
   const accountInfo = {
@@ -18,10 +19,16 @@ export default function ({ navigation }) {
     history: "",
   };
   return (
-    <Layout>
-      <ScrollView contentContainerStyle={{}}>
-        {/* <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}> */}
-        {/* </LinearGradient> */}
+    <Layout
+      style={{
+        minHeight: "100%",
+      }}
+    >
+      <ScrollView
+        contentContainerStyle={{
+          minHeight: "100%",
+        }}
+      >
         <View
           style={{
             alignItems: "center",
@@ -40,8 +47,9 @@ export default function ({ navigation }) {
           <SectionContent>
             <View
               style={{
-                flex: 3,
+                flex: 1,
                 alignItems: "flex-start",
+                minHeight: 500,
               }}
             >
               <View
@@ -73,6 +81,15 @@ export default function ({ navigation }) {
                 </View>
               </View>
             </View>
+            <Button
+              text="Xem lịch sử giao hàng"
+              onPress={() => {
+                navigation.navigate("History");
+              }}
+              style={{
+                marginTop: "auto",
+              }}
+            />
           </SectionContent>
         </Section>
       </ScrollView>

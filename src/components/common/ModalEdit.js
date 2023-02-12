@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import Modal from "react-native-modal";
-import { Button } from "react-native-rapi-ui";
+import { Button, Text, TextInput } from "react-native-rapi-ui";
 import { Col, Row } from "./Flex";
 
-export default function ModalCustom(props) {
-  const { isVisible, onClose, modalContent } = props;
+export default function ModalEdit(props) {
+  const { isVisible, onClose, title, onChange } = props;
+  const [text, setText] = useState("");
   return (
     <Modal
       isVisible={isVisible}
@@ -23,10 +24,17 @@ export default function ModalCustom(props) {
           borderWidth: 2,
           borderRadius: 5,
           padding: 20,
-          maxHeight: 400,
+          maxHeight: 200,
         }}
       >
-        {modalContent}
+        <Text style={{ marginBottom: 10, textAlign: "center" }}>
+          {title || "Update"}
+        </Text>
+        <TextInput
+          placeholder="Enter your text"
+          value={text}
+          onChangeText={(val) => setText(val)}
+        />
 
         <Row style={{ marginTop: "auto" }}>
           <Col numRows={10}>
@@ -43,7 +51,9 @@ export default function ModalCustom(props) {
           <Col numRows={10}>
             <Button
               text="Confirm"
-              onPress={onClose}
+              onPress={() => {
+                onChange(text);
+              }}
               //   outline
               size="md"
               style={{ height: 40 }}

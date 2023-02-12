@@ -10,18 +10,43 @@ import {
   Text,
   TextInput,
 } from "react-native-rapi-ui";
-import ModalCustom from "../components/common/ModalCustom";
-import InfoRow from "../components/profile/InfoRow";
+import ModalEdit from "../components/common/ModalEdit";
+import InfoRow from "../components/common/InfoRow";
 
 export default function ({ navigation }) {
   const [isModalVisible, setModalVisible] = useState(false);
-  const [text, setText] = useState("");
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
+  const [modalTitle, setModalTitle] = useState("");
+  const [key, setKey] = useState("");
+  const truckInfo = {
+    id: "123443123",
+    license: "62G1-11111",
+    ownerName: "Cảnh",
+    dimension: "1111",
+    weight: "1111",
   };
+
+  const toggleModal = (key, title) => {
+    setModalVisible(!isModalVisible);
+    // if (!isModalVisible) {
+    setKey(key);
+    setModalTitle(title);
+    // } else {
+    //   setKey("");
+    //   setModalTitle("");
+    // }
+  };
+
   return (
-    <Layout>
-      <ScrollView contentContainerStyle={{}}>
+    <Layout
+      style={{
+        minHeight: "100%",
+      }}
+    >
+      <ScrollView
+        contentContainerStyle={{
+          minHeight: "100%",
+        }}
+      >
         <View
           style={{
             alignItems: "center",
@@ -61,42 +86,46 @@ export default function ({ navigation }) {
                       width: "100%",
                     }}
                   >
-                    <InfoRow
-                      title="Id"
-                      value="1234"
-                      startIcon="card"
-                      endIcon="create"
-                      onChange={() => {
-                        toggleModal();
-                      }}
-                    />
+                    <InfoRow title="Id" value={truckInfo.id} startIcon="card" />
                     <InfoRow
                       title="Bảng số xe"
-                      value="62G1-35281"
+                      value={truckInfo.license}
                       startIcon="document"
                       endIcon="create"
                       style={{ marginTop: 20 }}
+                      onChange={() => {
+                        toggleModal("license", "Thay đổi bảng số xe");
+                      }}
                     />
                     <InfoRow
                       title="Tên chủ xe"
-                      value="Chủ A"
+                      value={truckInfo.ownerName}
                       startIcon="person"
                       endIcon="create"
                       style={{ marginTop: 20 }}
+                      onChange={() => {
+                        toggleModal("ownerName", "Thay đổi tên chủ xe");
+                      }}
                     />
                     <InfoRow
                       title="Kích thước thùng xe"
-                      value="1111 (Kg)"
+                      value={truckInfo.dimension + "(KG)"}
                       startIcon="cube"
                       endIcon="create"
                       style={{ marginTop: 20 }}
+                      onChange={() => {
+                        toggleModal("dimension", "Thay đổi kích thước thùng");
+                      }}
                     />
                     <InfoRow
                       title="Khối lượng thùng xe"
-                      value="1111 (Kg)"
+                      value={truckInfo.weight + "(KG)"}
                       startIcon="stopwatch"
                       endIcon="create"
                       style={{ marginTop: 20 }}
+                      onChange={() => {
+                        toggleModal("weight", "Thay đổi khối lượng thùng");
+                      }}
                     />
                   </View>
                 </View>
@@ -105,19 +134,15 @@ export default function ({ navigation }) {
           </SectionContent>
         </Section>
       </ScrollView>
-      <ModalCustom
+      <ModalEdit
         isVisible={isModalVisible}
         onClose={toggleModal}
-        modalContent={
-          <>
-            <Text style={{ marginBottom: 10 }}>TextInput</Text>
-            <TextInput
-              placeholder="Enter your text"
-              value={text}
-              onChangeText={(val) => setText(val)}
-            />
-          </>
-        }
+        title={modalTitle}
+        onChange={(value) => {
+          console.log(key);
+          console.log(modalTitle);
+          console.log(value);
+        }}
       />
     </Layout>
   );
